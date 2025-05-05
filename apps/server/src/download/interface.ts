@@ -1,4 +1,5 @@
 import type { Track } from "@beatsync/shared";
+import { Pagination } from "@beatsync/shared/types/schemas/dab";
 
 /**
  * Implementations of this interface should provide search functionality from a provider.
@@ -25,5 +26,5 @@ export interface DownloadService {
 
 export type SearchResult = {
   tracks: Track[];
-  pagination?: any;
-}
+  pagination?: Pagination;
+};
