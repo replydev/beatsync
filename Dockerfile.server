@@ -1,0 +1,33 @@
+FROM docker.io/oven/bun:1.2-alpine as base
+
+# Builder image
+FROM base as builder
+
+WORKDIR /builder
+
+# Install dependencies
+COPY package.json ./
+COPY apps/server/package.json apps/server/bun.lock ./apps/server/
+COPY packages/shared/package.json packages/shared/bun.lock ./packages/shared/
+RUN bun install
+
+# Copy and build source
+COPY apps/server ./apps/server/
+COPY packages/shared ./packages/shared/
+RUN bun build --minify apps/server/src/index.ts > index.js
+
+# Runner image
+FROM base as runner
+
+WORKDIR /app
+
+RUN addgroup --system --gid 1001 beatsync-server
+RUN adduser --system --uid 1001 beatsync-server
+
+COPY --from=builder /builder/node_modules ./node_modules
+COPY --from=builder /builder/index.js .
+
+USER beatsync-server
+
+EXPOSE 8080 
+CMD ["bun", "index.js"]

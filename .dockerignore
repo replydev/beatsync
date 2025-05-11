@@ -2,5 +2,9 @@ apps/client/.next
 apps/client/README.md
 apps/client/.cursor
 apps/client/.env
+apps/server/uploads
+apps/server/README.md
+apps/server/node_modules
+apps/server/.gitignore
 packages/shared/node_modules
 packages/shared/README.md
