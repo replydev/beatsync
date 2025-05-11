@@ -14,7 +14,7 @@ RUN bun install
 # Copy and build source
 COPY apps/server ./apps/server/
 COPY packages/shared ./packages/shared/
-RUN bun build --minify apps/server/src/index.ts > index.js
+RUN bun build --target=bun apps/server/src/index.ts > index.js
 
 # Runner image
 FROM base as runner
@@ -24,8 +24,8 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 beatsync-server
 RUN adduser --system --uid 1001 beatsync-server
 
-COPY --from=builder /builder/node_modules ./node_modules
-COPY --from=builder /builder/index.js .
+RUN chown beatsync-server:beatsync-server /app
+COPY --from=builder --chown=beatsync-server:beatsync-server /builder/index.js .
 
 USER beatsync-server
 
