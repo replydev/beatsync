@@ -14,7 +14,7 @@ RUN bun install
 # Copy and build source
 COPY apps/server ./apps/server/
 COPY packages/shared ./packages/shared/
-RUN bun build --target=bun apps/server/src/index.ts > index.js
+RUN bun build --target=bun --minify apps/server/src/index.ts > index.js
 
 # Runner image
 FROM base as runner
