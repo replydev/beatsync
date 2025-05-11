@@ -133,30 +133,6 @@ const STATIC_AUDIO_SOURCES: StaticAudioSource[] = [
     name: "Jacob Tillberg - Feel You",
     url: "/Jacob Tillberg - Feel You.mp3",
   },
-  {
-    name: "Black Coast - TRNDSTTR (Lucian Remix)",
-    url: "/trndsttr.mp3",
-  },
-  {
-    name: "STVCKS - Don't Be Scared",
-    url: "/STVCKS - Don't Be Scared.mp3",
-  },
-  {
-    name: "INZO x ILLUSIO - Just A Mirage",
-    url: "/INZO x ILLUSIO - Just A Mirage.mp3",
-  },
-  {
-    name: "Tom Reev, Assix & Jason Gewalt - Where It Hurts",
-    url: "/Tom Reev, Assix & Jason Gewalt - Where It Hurts.mp3",
-  },
-  {
-    name: "DROELOE x San Holo - Lines of the Broken (ft. CUT)",
-    url: "/DROELOE x San Holo - Lines of the Broken (ft. CUT).mp3",
-  },
-  {
-    name: "joyful - chess (slowed)",
-    url: "/joyful - chess (slowed).mp3",
-  },
 ].map((source, index) => ({
   ...source,
   id: `static-${index}`,
