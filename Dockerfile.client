@@ -12,6 +12,9 @@ RUN bun install
 COPY packages/shared /builder/packages/shared/
 COPY apps/client /builder/apps/client/
 
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_WS_URL
+
 # Build webapp
 RUN cd apps/client && bun run build
 
