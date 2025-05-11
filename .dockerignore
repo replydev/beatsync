@@ -1,0 +1,6 @@
+apps/client/.next
+apps/client/README.md
+apps/client/.cursor
+apps/client/.env
+packages/shared/node_modules
+packages/shared/README.md
